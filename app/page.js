@@ -8,7 +8,8 @@ export default function Home() {
 
     {/* // Display Current Stock */}
     <div className='container bg-red-100 mx-auto'>
-      <h1>Current Stock</h1>
+      <h1>Add a Product</h1>
+      <h1>Display Current Stock</h1>
     </div>
    </>
   )
