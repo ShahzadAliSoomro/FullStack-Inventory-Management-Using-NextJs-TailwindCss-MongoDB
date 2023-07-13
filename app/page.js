@@ -1,17 +1,16 @@
 "use client"
 import Header from "@/components/Header";
-import { headers } from "next/dist/client/components/headers";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [productForm, setProductForm] = useState({});
+  const [error, setError] = useState(null);
 
   const addProduct = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/product', {
+      const response = await fetch('/api/product',{
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -24,10 +23,11 @@ export default function Home() {
         console.log('Product added successfully');
       } else {
         // Handle error case
-        console.error('Error adding product')
+        setError('Error adding product');
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
+      setError('Error adding product');
     }
   };
 
@@ -61,9 +61,9 @@ export default function Home() {
 
         <form>
           <div className="mb-4">
-            <table htmlFor="productName" className="block mb-2">
+            <label htmlFor="productName" className="block mb-2">
               Product Name
-            </table>
+            </label>
             <input
               name="slug"
               onChange={handleChange}
@@ -74,27 +74,27 @@ export default function Home() {
           </div>
 
           <div className="mb-4">
-            <table htmlFor="productName" className="block mb-2">
+            <label htmlFor="quantity" className="block mb-2">
               Quantity
-            </table>
+            </label>
             <input
               name="quantity"
               onChange={handleChange}
               type="text"
-              id="productName"
+              id="quantity"
               className="w-full border border-gray-300 px-4 py-2"
             />
           </div>
 
           <div className="mb-4">
-            <table htmlFor="productName" className="block mb-2">
+            <label htmlFor="price" className="block mb-2">
               Price
-            </table>
+            </label>
             <input
               name="price"
               onChange={handleChange}
               type="text"
-              id="productName"
+              id="price"
               className="w-full border border-gray-300 px-4 py-2"
             />
           </div>
@@ -122,12 +122,12 @@ export default function Home() {
           <tbody>
             {/* // Sample data */}
             <tr>
-              <td className="border px-4 py-2">Procudt A</td>
+              <td className="border px-4 py-2">Product A</td>
               <td className="border px-4 py-2">10</td>
               <td className="border px-4 py-2">$19.99</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Procudt B</td>
+              <td className="border px-4 py-2">Product B</td>
               <td className="border px-4 py-2">5</td>
               <td className="border px-4 py-2">$9.99</td>
             </tr>
