@@ -8,10 +8,10 @@ const uri = "mongodb+srv://mongodb:iSFluA6UhDtcm3VD@cluster0.sspuss0.mongodb.net
 const client = new MongoClient(uri);
   try {
     const database = client.db('harry');
-    const movies = database.collection('movies');
+    const movies = database.collection('inventory');
     // Query for a movie that has the title 'Back to the Future'
-    const query = { title: 'Back to the Future' };
-    const movie = await movies.findOne(query).toArray();
+    const query = { };
+    const movie = await movies.find(query).toArray();
     console.log(movie);
     return NextResponse.json({"a": 34, movie})
   } finally {
