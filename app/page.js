@@ -3,9 +3,21 @@ import Header from "@/components/Header";
 import { useState, useEffect } from "react";
 
 export default function Home() {
+
+  // const mongoose = require('mongoose');
   const [productForm, setProductForm] = useState({});
   const [error, setError] = useState(null);
 
+  // const DB = "mongodb+srv://shahzad:1214shahzad@cluster0.9xtwnx6.mongodb.net/mernstack?retryWrites=true&w=majority"
+  
+  // mongoose.connect(DB, {
+  //   useNewUrlPares: true,
+  //   useCreateIndex: true,
+  //   useUnifiedTopology: true,
+  //   useFindAndModify: false
+  // }).then(() => {
+  //   console.log(`connection successfully`)
+  // }).catch((err) => console.log(`no connection`));
   const addProduct = async (e) => {
     e.preventDefault();
 
@@ -73,7 +85,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-4">  
             <label htmlFor="quantity" className="block mb-2">
               Quantity
             </label>
