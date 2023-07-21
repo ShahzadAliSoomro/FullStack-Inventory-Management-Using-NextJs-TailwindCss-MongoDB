@@ -1,15 +1,14 @@
-"use client"
+"use client";
 import Header from "@/components/Header";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-
   // const mongoose = require('mongoose');
   const [productForm, setProductForm] = useState({});
   const [error, setError] = useState(null);
 
   // const DB = "mongodb+srv://shahzad:1214shahzad@cluster0.9xtwnx6.mongodb.net/mernstack?retryWrites=true&w=majority"
-  
+
   // mongoose.connect(DB, {
   //   useNewUrlPares: true,
   //   useCreateIndex: true,
@@ -22,27 +21,27 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/product',{
+      const response = await fetch("/api/product", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(productForm)
+        body: JSON.stringify(productForm),
       });
-
+      console.log({ response });
       if (response.ok) {
         // product added successfully
-        console.log('Product added successfully');
+        console.log("Product added successfully");
       } else {
         // Handle error case
-        setError('Error adding product');
+        setError("Error adding product");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setError('Error adding product');
+      console.error("Error:", error);
+      setError("Error adding product");
     }
   };
-
+console.log({productForm})
   const handleChange = (e) => {
     setProductForm({ ...productForm, [e.target.name]: e.target.value });
   };
@@ -85,7 +84,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="mb-4">  
+          <div className="mb-4">
             <label htmlFor="quantity" className="block mb-2">
               Quantity
             </label>
